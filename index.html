@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Medication Quick-Log | NeatlyHQ</title>
+<script data-goatcounter="https://neatlyhq.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<style>
+  :root{
+    --navy:#102A43;
+    --off-white:#FAF8F1;
+    --dark:#2E2D26;
+    --gold:#B8860B;
+    --gold-light:#D9A93A;
+    --border:#D9D3C4;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--off-white);
+    color:var(--dark);
+    line-height:1.5;
+  }
+  .wrap{
+    max-width:900px;
+    margin:0 auto;
+    padding:48px 20px 80px;
+  }
+  header.brand{
+    text-align:center;
+    font-family:Georgia, serif;
+    font-weight:bold;
+    letter-spacing:2px;
+    color:var(--gold);
+    font-size:14px;
+    margin-bottom:32px;
+  }
+  .hero{
+    text-align:center;
+    margin-bottom:40px;
+  }
+  .hero h1{
+    font-family:Georgia, serif;
+    font-size:clamp(28px,5vw,42px);
+    color:var(--navy);
+    margin:0 0 16px;
+  }
+  .hero p{
+    font-size:18px;
+    color:var(--dark);
+    max-width:560px;
+    margin:0 auto;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:start;
+    margin-bottom:48px;
+  }
+  @media (max-width:700px){
+    .grid{grid-template-columns:1fr;}
+  }
+  .preview{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:24px;
+    box-shadow:0 4px 16px rgba(16,42,67,0.08);
+  }
+  .preview-title{
+    font-family:Georgia, serif;
+    font-weight:bold;
+    font-size:20px;
+    color:var(--navy);
+    margin-bottom:12px;
+  }
+  .preview ul{
+    padding-left:20px;
+    margin:0;
+    font-size:15px;
+  }
+  .preview li{margin-bottom:10px;}
+  .preview li::marker{color:var(--gold);}
+  .badge{
+    display:inline-block;
+    background:var(--gold);
+    color:#fff;
+    font-weight:bold;
+    font-size:12px;
+    letter-spacing:1px;
+    padding:4px 10px;
+    border-radius:4px;
+    margin-bottom:16px;
+  }
+  .card{
+    background:var(--navy);
+    color:var(--off-white);
+    border-radius:12px;
+    padding:32px;
+  }
+  .card h2{
+    font-family:Georgia, serif;
+    font-size:22px;
+    margin-top:0;
+    margin-bottom:8px;
+  }
+  .card p.sub{
+    font-size:14px;
+    color:#C9D3DD;
+    margin-bottom:24px;
+  }
+  label{
+    display:block;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:6px;
+    color:var(--off-white);
+  }
+  input[type=email]{
+    width:100%;
+    padding:12px 14px;
+    border-radius:6px;
+    border:1px solid #3A4F66;
+    background:#0C2137;
+    color:#fff;
+    font-size:16px;
+    margin-bottom:16px;
+  }
+  input[type=email]::placeholder{color:#8FA3B8;}
+  .consent{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    font-size:12.5px;
+    color:#C9D3DD;
+    margin-bottom:20px;
+  }
+  .consent input{margin-top:3px;flex-shrink:0;}
+  .consent a{color:var(--gold-light);}
+  button.cta{
+    width:100%;
+    background:var(--gold);
+    color:#fff;
+    border:none;
+    font-weight:bold;
+    font-size:16px;
+    padding:14px;
+    border-radius:6px;
+    cursor:pointer;
+    letter-spacing:0.5px;
+  }
+  button.cta:hover{background:var(--gold-light);}
+  button.cta:disabled{background:#5a5a4a;cursor:not-allowed;}
+  .fineprint{
+    font-size:11px;
+    color:#8FA3B8;
+    margin-top:14px;
+    text-align:center;
+  }
+  .disclaimer{
+    max-width:700px;
+    margin:0 auto;
+    font-size:12px;
+    color:#6b6a5f;
+    text-align:center;
+    padding-top:32px;
+    border-top:1px solid var(--border);
+  }
+  .disclaimer strong{color:var(--dark);}
+  .honeypot{position:absolute;left:-9999px;}
+  #error-message{
+    display:none;
+    margin:0 0 16px;
+    padding:10px 14px;
+    border-radius:6px;
+    font-size:13px;
+    background:#F6D3D3;
+    color:#6B1616;
+    border:1px solid #E8B4B4;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="brand">NEATLYHQ</header>
+
+  <div class="hero">
+    <h1>Get the Free Medication Quick-Log</h1>
+    <p>One page to know exactly what's due and what's low, before you run out. A free sample from the NeatlyHQ Medical &amp; Caregiver family.</p>
+  </div>
+
+  <div class="grid">
+    <div class="preview">
+      <span class="badge">FREE SAMPLE</span>
+      <div class="preview-title">What's inside</div>
+      <ul>
+        <li>Medication list: dosage, prescriber, refill date, quantity on hand</li>
+        <li>Auto-calculating Refill Status (Overdue / Soon / OK)</li>
+        <li>Auto-calculating Stock Status so you never run out</li>
+        <li>Excel + Google Sheets, works on desktop &amp; tablet</li>
+        <li>Bonus: a look at the full Chronic Illness &amp; Caregiver family</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Download it free</h2>
+      <p class="sub">One confirmation email, then your download link — nothing else.</p>
+
+      <form id="sib-form" method="POST" action="https://47f19a1e.sibforms.com/serve/MUIFAIK0vJH05mvUN2s9FgY3TWE3CXqslsBMsmjKAmpnr14R_CsuGApva71hYpnWO5nuGJRxEXDku0HE4L-x6MHGkOipxvCitgDbdirO1Mn51jCqFQKqF6vmAeJS-FiLMioVXpPlniJb_MpPGNovZY1HVd0-Gv3XRf8q9W_QaCD0BVz5FYxxSkV6vJ4Omj_MQtdpmXBCmc4OqT1yeQ==" data-type="subscription">
+        <div id="error-message" role="alert" aria-live="polite"></div>
+        <label for="EMAIL">Email address</label>
+        <input type="email" id="EMAIL" name="EMAIL" placeholder="you@example.com" required>
+
+        <div class="consent">
+          <input type="checkbox" id="consent-check" name="OPT_IN" value="yes" required>
+          <label for="consent-check" style="font-weight:normal;margin:0;">
+            I agree to receive this free file and occasional emails from NeatlyHQ about the Medical &amp; Caregiver family. My email is processed by our email platform (Brevo) only to send these emails, and is never sold or shared beyond that. I can unsubscribe anytime via the link in every email. See the full disclaimer below.
+          </label>
+        </div>
+
+        <input type="text" name="email_address_check" class="honeypot" value="" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="locale" value="en">
+
+        <button type="submit" class="cta" id="submit-btn">Download Free</button>
+        <p class="fineprint">You'll get a confirmation email — click the link inside to receive your download link.</p>
+      </form>
+    </div>
+  </div>
+
+  <div class="disclaimer">
+    <p><strong>Medical &amp; legal disclaimer.</strong> This is an organizational tool only. It is not medical, legal, tax, or financial advice, and NeatlyHQ is not a healthcare provider, pharmacy, or insurer. Refill and stock alerts are calculated only from what you enter; they are reminders, not a substitute for checking your actual prescriptions and pharmacy records. Always follow the guidance of your prescriber or pharmacist. To the fullest extent permitted by law, NeatlyHQ makes no warranty as to the accuracy of any calculation in this file and is not liable for any missed refill, dosing error, or other loss arising from its use. Provided "as is," at your own risk.</p>
+    <p><strong>Privacy.</strong> Your email is collected only to deliver this file and related NeatlyHQ emails about the Medical &amp; Caregiver family. It is never sold or shared with third parties outside our email platform (Brevo), which processes it on our behalf. Unsubscribe anytime via the link in every email. This page also uses GoatCounter, a cookie-free analytics tool, to count visits anonymously — it never receives your email.</p>
+    <p>&copy; NeatlyHQ &middot; Premium digital tools</p>
+  </div>
+</div>
+
+<script>
+  document.getElementById('sib-form').addEventListener('submit', function(e){
+    var errorEl = document.getElementById('error-message');
+    var emailField = document.getElementById('EMAIL');
+    var email = emailField.value;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      e.preventDefault();
+      errorEl.textContent = 'Please enter a valid email address.';
+      errorEl.style.display = 'block';
+      errorEl.scrollIntoView({behavior:'smooth', block:'center'});
+      emailField.focus();
+      return;
+    }
+    errorEl.style.display = 'none';
+  });
+</script>
+</body>
+</html>
